@@ -4,11 +4,13 @@ const form = document.forms['tasks__form']
 
 form.addEventListener('submit', (event) => {
 	event.preventDefault()
-
 	const inputText = event.currentTarget.querySelector('input').value
-	addTask(inputText)
 
-	form.reset()
+	if(inputText !== ''){
+		addTask(inputText)
+		form.reset()
+	}
+	
 
 })
 
