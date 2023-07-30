@@ -1,21 +1,17 @@
-const taskInput = document.getElementById('task__input')
 const taskList = document.getElementById('tasks__list')
 const taskRemove = document.querySelectorAll('task__remove')
+const form = document.forms['tasks__form']
 
-taskInput.addEventListener('keyup', (event) => {
-	if(event.key === 'Enter'){
+form.addEventListener('submit', (event) => {
+	event.preventDefault()
 
-		// вызов функции добавление эл-та
-		if(event.target.value){
+	const inputText = event.currentTarget.querySelector('input').value
+	addTask(inputText)
 
-			addTask(event.target.value)
+	form.reset()
 
-			// clean input
-			event.target.value = ''
-		}
-		
-	}
 })
+
 
 function addTask(text) {
 	const task = document.createElement('div')
